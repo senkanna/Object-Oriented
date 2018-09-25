@@ -1,0 +1,15 @@
+{
+    "name": "dipakyadav/di_demo",
+    "description": "DI Demo project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Dipak Yadav",
+            "email": "dipakmdhrm@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": { "Senthil\\DIExample\\": "src" }
+    }
+}
