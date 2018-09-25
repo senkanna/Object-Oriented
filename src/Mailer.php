@@ -9,13 +9,13 @@ class Mailer {
   protected $smtp_port;
   protected $logPath;
 
-  public function __construct() {
-    $this->hostname = 'smtp.blogtrottr.com';
-    $this->smtp_user = 'smtpuser';
-    $this->smtp_password = 'smtppass';
-    $this->smtp_port = '465';
+  public function __construct($hostname,$smtp_user,$smtp_password,$smtp_port,$logPath) {
+    $this->hostname = $hostname;
+    $this->smtp_user = $smtp_user;
+    $this->smtp_password = $smtp_password;
+    $this->smtp_port = $smtp_port;
     // Log messages for demo in a log file.
-    $this->logPath = __DIR__.'../../logs/emails.log';
+    $this->logPath = $logPath;
   }
 
   public function sendMail($sender, $recipient, $subject, $body) {

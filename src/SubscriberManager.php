@@ -6,11 +6,11 @@ use Senthil\DIExample\Mailer;
 
 class SubscriberManager {
 	protected $pdo;
+	protected $config;
 
-	public function __construct() {
-
-		$dsn = 'sqlite:' . __DIR__ . '/../data/database.sqlite';
-		$this->pdo = new PDO($dsn);
+	public function __construct($config) {
+		$this->config = $config;
+		$this->pdo = new PDO($this->config['dsn']);
 
 	}
 
@@ -33,7 +33,12 @@ class SubscriberManager {
   , $subscriber['name']);
   
 		  
-		 $mailer = new Mailer();
+		 $mailer = new Mailer($this->config['hostname'],
+		        $this->config['smtp_user'],
+		        $this->config['smtp_password'],
+		        $this->config['smtp_port'],
+		    $this->config['logPath']);
+
 		  $mailer->sendMail($sender, $subscriber['email'], $subject, $message);
 
 
